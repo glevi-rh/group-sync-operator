@@ -37,9 +37,9 @@ env:
 
 kube_rbac_proxy:
   image:
-    repository: quay.io/redhat-cop/kube-rbac-proxy
+    repository: registry.redhat.io/openshift4/ose-kube-rbac-proxy
     pullPolicy: IfNotPresent
-    version: v0.11.1-0
+    version: sha256:c8336efb1269a7f40113aa9767c6dc9affe4fd830a1ca6004206bcef1d0274a3
   resources:
     requests:
       cpu: 100m
