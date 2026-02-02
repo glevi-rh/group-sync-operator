@@ -32,7 +32,7 @@ endif
 BUNDLE_METADATA_OPTS ?= $(BUNDLE_CHANNELS) $(BUNDLE_DEFAULT_CHANNEL)
 
 # Image URL to use all building/pushing image targets
-IMG ?= quay.io/konflux-ci/group-sync-operator:latest
+IMG ?= quay.io/konflux-ci/group-sync-operator@sha256:9bfebf0f27a393dc7254ba8e7b88278ce1f7b31a8470267da5a3489c64f8d64a
 
 # ENVTEST_K8S_VERSION refers to the version of kubebuilder assets to be downloaded by envtest binary.
 ENVTEST_K8S_VERSION = 1.25.0
