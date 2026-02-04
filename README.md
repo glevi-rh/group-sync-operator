@@ -1,10 +1,10 @@
 Group Sync Operator
 ===================
 
-![build status](https://github.com/redhat-cop/group-sync-operator/workflows/push/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/redhat-cop/group-sync-operator)](https://goreportcard.com/report/github.com/redhat-cop/group-sync-operator)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/redhat-cop/group-sync-operator)
-[![CRD Docs](https://img.shields.io/badge/CRD-Docs-brightgreen)](https://doc.crds.dev/github.com/redhat-cop/group-sync-operator)
+![build status](https://github.com/glevi-rh/group-sync-operator/workflows/push/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/glevi-rh/group-sync-operator)](https://goreportcard.com/report/github.com/glevi-rh/group-sync-operator)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/glevi-rh/group-sync-operator)
+[![CRD Docs](https://img.shields.io/badge/CRD-Docs-brightgreen)](https://doc.crds.dev/github.com/glevi-rh/group-sync-operator)
 
 Synchronizes groups from external providers into OpenShift
 
@@ -33,14 +33,14 @@ Use the following steps to deploy the operator to an OpenShift cluster
 .
 
 ```shell
-git clone https://github.com/redhat-cop/group-sync-operator.git
+git clone https://github.com/glevi-rh/group-sync-operator.git
 cd group-sync-operator
 ```
 
 2. Deploy the Operator
 
 ```shell
-make deploy IMG=quay.io/redhat-cop/group-sync-operator:latest
+make deploy IMG=quay.io/konflux-ci/group-sync-operator
 ```
 
 _Note:_ The `make deploy` command will execute the `manifests` target that will require additional build tools to be made available. This target can be skipped by including the `-o manifests` in the command above.
@@ -686,7 +686,7 @@ Here are the instructions to install the latest release with Helm.
 
 ```shell
 oc new-project group-sync-operator
-helm repo add group-sync-operator https://redhat-cop.github.io/group-sync-operator
+helm repo add group-sync-operator https://glevi-rh.github.io/group-sync-operator
 helm repo update
 helm install group-sync-operator group-sync-operator/group-sync-operator
 ```
@@ -723,7 +723,7 @@ exit
 
 ```shell
 make install
-export repo=redhatcopuser #replace with yours
+export repo=konflux-ci
 docker login quay.io/$repo/group-sync-operator
 make docker-build IMG=quay.io/$repo/group-sync-operator:latest
 make docker-push IMG=quay.io/$repo/group-sync-operator:latest
@@ -739,8 +739,8 @@ make run ENABLE_WEBHOOKS=false
 Define an image and tag. For example...
 
 ```shell
-export imageRepository="quay.io/redhat-cop/group-sync-operator"
-export imageTag="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/redhat-cop/group-sync-operator.git '*.*.*' | tail --lines=1 | cut --delimiter='/' --fields=3)"
+export imageRepository="quay.io/konflux-ci/group-sync-operator"
+export imageTag="$(git -c 'versionsort.suffix=-' ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/glevi-rh/group-sync-operator.git '*.*.*' | tail --lines=1 | cut --delimiter='/' --fields=3)"
 ```
 
 Deploy chart...
@@ -760,7 +760,7 @@ kubectl delete -f charts/group-sync-operator/crds/crds.yaml
 ### Building/Pushing the operator image
 
 ```shell
-export repo=redhatcopuser #replace with yours
+export repo=konflux-ci
 docker login quay.io/$repo/group-sync-operator
 make docker-build IMG=quay.io/$repo/group-sync-operator:latest
 make docker-push IMG=quay.io/$repo/group-sync-operator:latest
